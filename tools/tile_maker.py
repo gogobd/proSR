@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 import argparse
 import logging
 import os
@@ -85,61 +84,6 @@ def save_all_squares(image, pattern_target, wr, hr):
             i = i + 1
             save_image(image_c, outputfile_name)
             import pdb; pdb.set_trace()
-
-
-# def save_all_squares(image, pattern_target, wr, hr):
-#     w, h = image.size
-#     r = min(w, h)
-#     logger.debug(
-#         "Cutting up image that is {}x{} in {}x{} tiles.)".format(
-#             image.size[0],
-#             image.size[1],
-#             wr,
-#             hr,
-#         )
-#     )
-#     if (r < wr) or (r < hr):
-#         logger.warn("Image too small.")
-#         return
-#     i = 1
-#     for w0 in range(w//wr):
-#         for h0 in range(h//hr):
-#             image_c = crop_square(
-#                 image,
-#                 w0*wr,
-#                 h0*hr,
-#                 (w0+1)*wr,
-#                 (h0+1)*hr,
-#             )
-#             outputfile_name = pattern_target.format(i)
-#             i = i + 1
-#             save_image(image_c, outputfile_name)
-#             import pdb; pdb.set_trace()
-#         if h%hr:
-#             image_c = crop_square(
-#                 image,
-#                 w0*wr,
-#                 h-hr,
-#                 (w0+1)*wr,
-#                 h,
-#             )
-#             outputfile_name = pattern_target.format(i)
-#             i = i + 1
-#             save_image(image_c, outputfile_name)
-#             import pdb; pdb.set_trace()
-#     if w%wr:
-#         for h0 in range(h//hr):
-#             image_c = crop_square(
-#                 image,
-#                 w-wr,
-#                 h0*hr,
-#                 w,
-#                 (h0+1)*hr,
-#             )
-#             outputfile_name = pattern_target.format(i)
-#             i = i + 1
-#             save_image(image_c, outputfile_name)
-#             import pdb; pdb.set_trace()
 
 
 def process_image(filename_source, filename_target):
