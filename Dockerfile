@@ -38,4 +38,4 @@ CMD python -m visdom.server & \
     /code-server-3.2.0-linux-x86_64/code-server --bind-addr 0.0.0.0:8080
 
 # docker build -t prosr .
-# docker run --gpus all -e PASSWORD='yourpassword' -p 8097:8097 -p 8080:8080 -it prosr
+# docker run --ipc=host --gpus all -e PASSWORD='yourpassword' -p 8097:8097 -p 8080:8080 -it prosr
