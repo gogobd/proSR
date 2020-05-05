@@ -125,7 +125,7 @@ To visualize intermediate results (optional) run the `visdom.server` in a separa
 
 ```
 # Run the server in a separate terminal
-python -m visdom.server -port 8067
+python -m visdom.server -port 8097
 ```
 
 ## Testing
