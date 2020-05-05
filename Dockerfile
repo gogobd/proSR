@@ -21,21 +21,21 @@ RUN curl -o Miniconda3-latest-Linux-x86_64.sh https://repo.anaconda.com/minicond
     && rm Miniconda3-latest-Linux-x86_64.sh
 
 # Code server
-RUN wget https://github.com/cdr/code-server/releases/download/3.2.0/code-server-3.2.0-linux-x86_64.tar.gz && \
-    tar -xzvf code-server-3.2.0-linux-x86_64.tar.gz && chmod +x code-server-3.2.0-linux-x86_64/code-server && \
+RUN wget -q https://github.com/cdr/code-server/releases/download/3.2.0/code-server-3.2.0-linux-x86_64.tar.gz && \
+    tar -xzf code-server-3.2.0-linux-x86_64.tar.gz && chmod +x code-server-3.2.0-linux-x86_64/code-server && \
     rm code-server-3.2.0-linux-x86_64.tar.gz
 
 # Project dependencies
-RUN conda install pytorch=0.4.0 torchvision cuda91 -c pytorch && \
+RUN conda install pytorch=0.4.1 torchvision cuda91 -c pytorch && \
     conda install scikit-image cython && \
-    conda install visdom dominate -c conda-forge
+    conda install visdom dominate jsonpatch -c conda-forge
 COPY . /proSR
 WORKDIR /proSR
 RUN pip install -Ur requirements.txt
 
 # Start container in notebook mode
-CMD python 3 -m visdom && \
+CMD python -m visdom.server & \
     /code-server-3.2.0-linux-x86_64/code-server --bind-addr 0.0.0.0:8080
 
 # docker build -t prosr .
-# docker run -e PASSWORD='yourpassword' -P 8097:8097 -p 8080:8080 -it prosr
+# docker run --gpus all -e PASSWORD='yourpassword' -p 8097:8097 -p 8080:8080 -it prosr
