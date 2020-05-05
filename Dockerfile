@@ -32,6 +32,7 @@ RUN conda install pytorch=0.4.1 torchvision cuda91 -c pytorch && \
 COPY . /proSR
 WORKDIR /proSR
 RUN pip install -Ur requirements.txt
+ENV SHELL /bin/bash
 
 # Start container in notebook mode
 CMD python -m visdom.server & \

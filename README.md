@@ -140,7 +140,7 @@ python test.py -i LR_INPUT (optional) -t HR_INPUT (optional) --checkpoint CHECKP
 #### Example
 ```
 # ProSR: Replicate x8 results
-python test.py --checkpoint data/checkpoints/proSR.pth --target data/datasets/DIV2K/DIV2K_valid_HR --scale 8
+python test.py --checkpoint data/checkpoints/proSR.pth --target data/datasets/DIV2K/DIV2K_valid_HR --scale 8 --output-dir test_proSR_DIV2K
 ```
 
 ## Additional Tools
